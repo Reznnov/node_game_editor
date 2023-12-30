@@ -50,7 +50,7 @@ class Scene(Serializable):
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
             raw_data = file.read()
-            data = json.loads(raw_data, encoding='utf-8')
+            data = json.loads(raw_data)
             self.deserialize(data)
 
 

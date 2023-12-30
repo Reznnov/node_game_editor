@@ -37,11 +37,23 @@ class QDMGraphicsNode(QGraphicsItem):
         self.initContent()
 
         self.initUI()
+        self.wasMoved = False
 
     def mouseMoveEvent(self, event):
         super().mouseMoveEvent(event)
-        self.node.updateConnectedEdges()
 
+        # optimize me! just update the selected nodes
+        for node in self.scene().scene.nodes:
+            if node.grNode.isSelected():
+                node.updateConnectedEdges()
+        self.wasMoved = True
+
+    def mouseReleaseEvent(self, event):
+        super().mouseReleaseEvent(event)
+
+        if self.wasMoved:
+            self.wasMoved = False
+            self.node.scene.history.storeHistory("Node moved")
 
     @property
     def title(self): return self._title
@@ -66,6 +78,7 @@ class QDMGraphicsNode(QGraphicsItem):
 
     def initTitle(self):
         self.title_item = QGraphicsTextItem(self)
+        self.title_item.node = self.node
         self.title_item.setDefaultTextColor(self._title_color)
         self.title_item.setFont(self._title_font)
         self.title_item.setPos(self._padding, 0)
