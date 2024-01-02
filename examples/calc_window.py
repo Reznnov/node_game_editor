@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 from nodeeditor.utils import loadStylesheets
 from nodeeditor.node_editor_window import NodeEditorWindow
 from examples.calc_sub_window import CalculatorSubWindow
-from nodeeditor.utils import dumpException
+from nodeeditor.utils import dumpException, pp
 
 # images for the dark skin
 import examples.qss.nodeeditor_dark_resources
@@ -14,8 +14,8 @@ import examples.qss.nodeeditor_dark_resources
 class CalculatorWindow(NodeEditorWindow):
 
     def initUI(self):
-        self.name_company = 'Blenderfreak'
-        self.name_product = 'Calculator NodeEditor'
+        self.name_company = 'Red Bread studio'
+        self.name_product = 'NN engine'
 
         self.stylesheet_filename = os.path.join(os.path.dirname(__file__), "qss/nodeeditor.qss")
         loadStylesheets(
@@ -46,7 +46,7 @@ class CalculatorWindow(NodeEditorWindow):
 
         self.readSettings()
 
-        self.setWindowTitle("Main scene Example")
+        self.setWindowTitle("main scene Example")
 
     def closeEvent(self, event):
         self.mdiArea.closeAllSubWindows()
@@ -56,34 +56,63 @@ class CalculatorWindow(NodeEditorWindow):
             self.writeSettings()
             event.accept()
 
-    def updateMenus(self):
-        pass
 
     def createActions(self):
         super().createActions()
 
-        self.closeAct = QAction("Cl&ose", self, statusTip="Close the active window", triggered=self.mdiArea.closeActiveSubWindow)
-        self.closeAllAct = QAction("Close &All", self, statusTip="Close all the windows", triggered=self.mdiArea.closeAllSubWindows)
-        self.tileAct = QAction("&Tile", self, statusTip="Tile the windows", triggered=self.mdiArea.tileSubWindows)
-        self.cascadeAct = QAction("&Cascade", self, statusTip="Cascade the windows", triggered=self.mdiArea.cascadeSubWindows)
-        self.nextAct = QAction("Ne&xt", self, shortcut=QKeySequence.NextChild, statusTip="Move the focus to the next window", triggered=self.mdiArea.activateNextSubWindow)
-        self.previousAct = QAction("Pre&vious", self, shortcut=QKeySequence.PreviousChild, statusTip="Move the focus to the previous window", triggered=self.mdiArea.activatePreviousSubWindow)
+        self.actClose = QAction("Cl&ose", self, statusTip="Close the active window", triggered=self.mdiArea.closeActiveSubWindow)
+        self.actCloseAll = QAction("Close &All", self, statusTip="Close all the windows", triggered=self.mdiArea.closeAllSubWindows)
+        self.actTile = QAction("&Tile", self, statusTip="Tile the windows", triggered=self.mdiArea.tileSubWindows)
+        self.actCascade = QAction("&Cascade", self, statusTip="Cascade the windows", triggered=self.mdiArea.cascadeSubWindows)
+        self.actNext = QAction("Ne&xt", self, shortcut=QKeySequence.NextChild, statusTip="Move the focus to the next window", triggered=self.mdiArea.activateNextSubWindow)
+        self.actPrevious = QAction("Pre&vious", self, shortcut=QKeySequence.PreviousChild, statusTip="Move the focus to the previous window", triggered=self.mdiArea.activatePreviousSubWindow)
 
-        self.separatorAct = QAction(self)
-        self.separatorAct.setSeparator(True)
+        self.actSeparator = QAction(self)
+        self.actSeparator.setSeparator(True)
 
-        self.aboutAct = QAction("&About", self, statusTip="Show the application's About box", triggered=self.about)
+        self.actAbout = QAction("&About", self, statusTip="Show the application's About box", triggered=self.about)
+
+    def getCurrentNodeEditorWidget(self):
+        """ we're returning NodeEditorWidget here... """
+        activeSubWindow = self.mdiArea.activeSubWindow()
+        if activeSubWindow:
+            return activeSubWindow.widget()
+        return None
 
     def onFileNew(self):
         try:
             subwnd = self.createMdiChild()
+            subwnd.widget().fileNew()
             subwnd.show()
         except Exception as e: dumpException(e)
 
+
+    def onFileOpen(self):
+        fnames, filter = QFileDialog.getOpenFileNames(self, 'Open graph from file')
+
+        try:
+            for fname in fnames:
+                if fname:
+                    existing = self.findMdiChild(fname)
+                    if existing:
+                        self.mdiArea.setActiveSubWindow(existing)
+                    else:
+                        # we need to create new subWindow and open the file
+                        nodeeditor = CalculatorSubWindow()
+                        if nodeeditor.fileLoad(fname):
+                            self.statusBar().showMessage("File %s loaded" % fname, 5000)
+                            nodeeditor.setTitle()
+                            subwnd = self.mdiArea.addSubWindow(nodeeditor)
+                            subwnd.show()
+                        else:
+                            nodeeditor.close()
+        except Exception as e: dumpException(e)
+
+
     def about(self):
-        QMessageBox.about(self, "Main scene Example",
-                "The <b>NN engine</b> example demonstrates how to easy create your feture vizual novel "
-                "document interface applications using PyQt5 and NodeEditor. For more information visit: "
+        QMessageBox.about(self, "About Calculator NodeEditor Example",
+                "The <b>NN engine</b> example demonstrates how to write ur vizual novel "
+                "using PyQt5 and NodeEditor. For more information visit: "
                 "<a href='https://discord.gg/A6vAhdBX/'>discord</a>")
 
     def createMenus(self):
@@ -96,22 +125,37 @@ class CalculatorWindow(NodeEditorWindow):
         self.menuBar().addSeparator()
 
         self.helpMenu = self.menuBar().addMenu("&Help")
-        self.helpMenu.addAction(self.aboutAct)
+        self.helpMenu.addAction(self.actAbout)
+
+    def updateMenus(self):
+        print("update Menus")
+        active = self.getCurrentNodeEditorWidget()
+        hasMdiChild = (active is not None)
+
+        self.actSave.setEnabled(hasMdiChild)
+        self.actSaveAs.setEnabled(hasMdiChild)
+        self.actClose.setEnabled(hasMdiChild)
+        self.actCloseAll.setEnabled(hasMdiChild)
+        self.actTile.setEnabled(hasMdiChild)
+        self.actCascade.setEnabled(hasMdiChild)
+        self.actNext.setEnabled(hasMdiChild)
+        self.actPrevious.setEnabled(hasMdiChild)
+        self.actSeparator.setVisible(hasMdiChild)
 
     def updateWindowMenu(self):
         self.windowMenu.clear()
-        self.windowMenu.addAction(self.closeAct)
-        self.windowMenu.addAction(self.closeAllAct)
+        self.windowMenu.addAction(self.actClose)
+        self.windowMenu.addAction(self.actCloseAll)
         self.windowMenu.addSeparator()
-        self.windowMenu.addAction(self.tileAct)
-        self.windowMenu.addAction(self.cascadeAct)
+        self.windowMenu.addAction(self.actTile)
+        self.windowMenu.addAction(self.actCascade)
         self.windowMenu.addSeparator()
-        self.windowMenu.addAction(self.nextAct)
-        self.windowMenu.addAction(self.previousAct)
-        self.windowMenu.addAction(self.separatorAct)
+        self.windowMenu.addAction(self.actNext)
+        self.windowMenu.addAction(self.actPrevious)
+        self.windowMenu.addAction(self.actSeparator)
 
         windows = self.mdiArea.subWindowList()
-        self.separatorAct.setVisible(len(windows) != 0)
+        self.actSeparator.setVisible(len(windows) != 0)
 
         for i, window in enumerate(windows):
             child = window.widget()
@@ -122,19 +166,21 @@ class CalculatorWindow(NodeEditorWindow):
 
             action = self.windowMenu.addAction(text)
             action.setCheckable(True)
-            action.setChecked(child is self.activeMdiChild())
+            action.setChecked(child is self.getCurrentNodeEditorWidget())
             action.triggered.connect(self.windowMapper.map)
             self.windowMapper.setMapping(action, window)
+
+
 
     def createToolBars(self):
         pass
 
     def createNodesDock(self):
         self.listWidget = QListWidget()
-        self.listWidget.addItem("Add scene")
-        self.listWidget.addItem("Add choice scene")
+        self.listWidget.addItem("Add Scene")
+        self.listWidget.addItem("Add choice Scene")
         self.listWidget.addItem("Add script")
-        self.listWidget.addItem("Add variable")
+        self.listWidget.addItem("Add object")
 
         self.items = QDockWidget("Nodes")
         self.items.setWidget(self.listWidget)
@@ -150,12 +196,12 @@ class CalculatorWindow(NodeEditorWindow):
         subwnd = self.mdiArea.addSubWindow(nodeeditor)
         return subwnd
 
-    def activeMdiChild(self):
-        """ we're returning NodeEditorWidget here... """
-        activeSubWindow = self.mdiArea.activeSubWindow()
-        if activeSubWindow:
-            return activeSubWindow.widget()
+    def findMdiChild(self, filename):
+        for window in self.mdiArea.subWindowList():
+            if window.widget().filename == filename:
+                return window
         return None
+
 
     def setActiveSubWindow(self, window):
         if window:

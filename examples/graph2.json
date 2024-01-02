@@ -1,0 +1,273 @@
+{
+    "id": 140662152955888,
+    "scene_width": 64000,
+    "scene_height": 64000,
+    "nodes": [
+        {
+            "id": 140662152956128,
+            "title": "My scene 1",
+            "pos_x": 34.54687499999994,
+            "pos_y": 356.21875,
+            "inputs": [
+                {
+                    "id": 140662152956368,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956464,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956560,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152956656,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140662152956176,
+            "title": "My scene 2",
+            "pos_x": 10.546875,
+            "pos_y": 33.468750000000064,
+            "inputs": [
+                {
+                    "id": 140662152956896,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152956992,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152957088,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152957184,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140662152956320,
+            "title": "My scene 3",
+            "pos_x": 434.796875,
+            "pos_y": 9.468750000000057,
+            "inputs": [
+                {
+                    "id": 140662152957424,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140662152957520,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140662152957616,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152957712,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140705620680784,
+            "title": "My scene 2",
+            "pos_x": -6.265624999999986,
+            "pos_y": -338.04687499999983,
+            "inputs": [
+                {
+                    "id": 140705620681024,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681072,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681168,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140705620681264,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140705620494752,
+            "title": "My scene 3",
+            "pos_x": 753.3359375000001,
+            "pos_y": -185.89062499999991,
+            "inputs": [
+                {
+                    "id": 140705620681456,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140705620682032,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140705620681984,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140705620678768,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140705620678432,
+            "title": "My scene 3",
+            "pos_x": 745.5234375000001,
+            "pos_y": 110.9843749999999,
+            "inputs": [
+                {
+                    "id": 140705620678672,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140705620678720,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                },
+                {
+                    "id": 140705620679008,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 2
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140705620679104,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        }
+    ],
+    "edges": [
+        {
+            "id": 140705620560672,
+            "edge_type": 2,
+            "start": 140705620681264,
+            "end": 140662152957616
+        },
+        {
+            "id": 140705620560576,
+            "edge_type": 2,
+            "start": 140662152957184,
+            "end": 140662152957520
+        },
+        {
+            "id": 140705620571136,
+            "edge_type": 2,
+            "start": 140662152956656,
+            "end": 140662152957424
+        },
+        {
+            "id": 140705620523808,
+            "edge_type": 2,
+            "start": 140662152957712,
+            "end": 140705620681456
+        },
+        {
+            "id": 140705620494800,
+            "edge_type": 2,
+            "start": 140662152957712,
+            "end": 140705620678672
+        }
+    ]
+}

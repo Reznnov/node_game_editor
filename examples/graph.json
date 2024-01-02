@@ -1,0 +1,138 @@
+{
+    "id": 140662152955888,
+    "scene_width": 64000,
+    "scene_height": 64000,
+    "nodes": [
+        {
+            "id": 140662152956128,
+            "title": "My scene 1",
+            "pos_x": 82.04687499999994,
+            "pos_y": 94.96875,
+            "inputs": [
+                {
+                    "id": 140662152956368,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956464,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956560,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152956656,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140662152956176,
+            "title": "My scene 2",
+            "pos_x": -225.703125,
+            "pos_y": 99.71875000000006,
+            "inputs": [
+                {
+                    "id": 140662152956896,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152956992,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152957088,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152957184,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140705620680784,
+            "title": "My scene 2",
+            "pos_x": 454.984375,
+            "pos_y": 131.95312500000017,
+            "inputs": [
+                {
+                    "id": 140705620681024,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681072,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681168,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140705620681264,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        }
+    ],
+    "edges": [
+        {
+            "id": 140268487043936,
+            "edge_type": 2,
+            "start": 140662152957184,
+            "end": 140662152956560
+        },
+        {
+            "id": 140268487044032,
+            "edge_type": 2,
+            "start": 140662152956656,
+            "end": 140705620681168
+        }
+    ]
+}

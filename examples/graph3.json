@@ -1,0 +1,228 @@
+{
+    "id": 140662152955888,
+    "scene_width": 64000,
+    "scene_height": 64000,
+    "nodes": [
+        {
+            "id": 140662152956128,
+            "title": "My scene 1",
+            "pos_x": 39.54687499999994,
+            "pos_y": 89.96875,
+            "inputs": [
+                {
+                    "id": 140662152956368,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956464,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140662152956560,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152956656,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140662152956176,
+            "title": "My scene 2",
+            "pos_x": 53.046875,
+            "pos_y": 404.71875,
+            "inputs": [
+                {
+                    "id": 140662152956896,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152956992,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140662152957088,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140662152957184,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140705620680784,
+            "title": "My scene 2",
+            "pos_x": 454.984375,
+            "pos_y": 131.95312500000017,
+            "inputs": [
+                {
+                    "id": 140705620681024,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681072,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140705620681168,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140705620681264,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140213538660432,
+            "title": "My scene 1",
+            "pos_x": 42.40624999999994,
+            "pos_y": -283.5078125000001,
+            "inputs": [
+                {
+                    "id": 140213538660624,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140213538660672,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 140213538660768,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140213538660864,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 140213538661104,
+            "title": "My scene 2",
+            "pos_x": 852.84375,
+            "pos_y": 132.2265625000001,
+            "inputs": [
+                {
+                    "id": 140213538661680,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140213538661728,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                },
+                {
+                    "id": 140213538661824,
+                    "index": 2,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 140213538661920,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        }
+    ],
+    "edges": [
+        {
+            "id": 140213538540320,
+            "edge_type": 2,
+            "start": 140662152957184,
+            "end": 140705620681024
+        },
+        {
+            "id": 140213538540224,
+            "edge_type": 2,
+            "start": 140662152956656,
+            "end": 140705620681072
+        },
+        {
+            "id": 140213538551168,
+            "edge_type": 2,
+            "start": 140213538660864,
+            "end": 140705620681168
+        },
+        {
+            "id": 140213538540272,
+            "edge_type": 2,
+            "start": 140705620681264,
+            "end": 140213538661728
+        }
+    ]
+}

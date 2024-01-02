@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-from nodeeditor.node_scene import Scene
+from nodeeditor.node_scene import Scene, InvalidFile
 from nodeeditor.node_node import Node
 from nodeeditor.node_edge import Edge, EDGE_TYPE_BEZIER
 from nodeeditor.node_graphics_view import QDMGraphicsView
@@ -44,10 +44,39 @@ class NodeEditorWidget(QWidget):
         name = os.path.basename(self.filename) if self.isFilenameSet() else "New Graph"
         return name + ("*" if self.isModified() else "")
 
+    def fileNew(self):
+        self.scene.clear()
+        self.filename = None
+
+    def fileLoad(self, filename):
+        QApplication.setOverrideCursor(Qt.WaitCursor)
+        try:
+            self.scene.loadFromFile(filename)
+            self.filename = filename
+            # clear history
+            return True
+        except InvalidFile as e:
+            print(e)
+            QApplication.restoreOverrideCursor()
+            QMessageBox.warning(self, "Error loading %s" % os.path.basename(filename), str(e))
+            return False
+        finally:
+            QApplication.restoreOverrideCursor()
+
+
+    def fileSave(self, filename=None):
+        # when called with empty parameter, we won't store the filename
+        if filename is not None: self.filename = filename
+        QApplication.setOverrideCursor(Qt.WaitCursor)
+        self.scene.saveToFile(self.filename)
+        QApplication.restoreOverrideCursor()
+        return True
+
+
     def addNodes(self):
-        node1 = Node(self.scene, "My Scene 1", inputs=[0,0,0], outputs=[1])
-        node2 = Node(self.scene, "My Scene 2", inputs=[3,3,3], outputs=[1])
-        node3 = Node(self.scene, "My Scene 3", inputs=[2,2,2], outputs=[1])
+        node1 = Node(self.scene, "My scene 1", inputs=[0,0,0], outputs=[1])
+        node2 = Node(self.scene, "My scene 2", inputs=[3,3,3], outputs=[1])
+        node3 = Node(self.scene, "My scene 3", inputs=[2,2,2], outputs=[1])
         node1.setPos(-350, -250)
         node2.setPos(-75, 0)
         node3.setPos(200, -150)
