@@ -14,7 +14,7 @@ import examples.qss.nodeeditor_dark_resources
 class CalculatorWindow(NodeEditorWindow):
 
     def initUI(self):
-        self.name_company = 'Red Bread studio'
+        self.name_company = 'Red bread studio'
         self.name_product = 'NN engine'
 
         self.stylesheet_filename = os.path.join(os.path.dirname(__file__), "qss/nodeeditor.qss")
@@ -22,6 +22,9 @@ class CalculatorWindow(NodeEditorWindow):
             os.path.join(os.path.dirname(__file__), "qss/nodeeditor-dark.qss"),
             self.stylesheet_filename
         )
+
+        self.empty_icon = QIcon(".")
+
 
         self.mdiArea = QMdiArea()
         self.mdiArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
@@ -46,7 +49,7 @@ class CalculatorWindow(NodeEditorWindow):
 
         self.readSettings()
 
-        self.setWindowTitle("main scene Example")
+        self.setWindowTitle("Calculator NodeEditor Example")
 
     def closeEvent(self, event):
         self.mdiArea.closeAllSubWindows()
@@ -102,7 +105,7 @@ class CalculatorWindow(NodeEditorWindow):
                         if nodeeditor.fileLoad(fname):
                             self.statusBar().showMessage("File %s loaded" % fname, 5000)
                             nodeeditor.setTitle()
-                            subwnd = self.mdiArea.addSubWindow(nodeeditor)
+                            subwnd = self.createMdiChild(nodeeditor)
                             subwnd.show()
                         else:
                             nodeeditor.close()
@@ -110,7 +113,7 @@ class CalculatorWindow(NodeEditorWindow):
 
 
     def about(self):
-        QMessageBox.about(self, "About Calculator NodeEditor Example",
+        QMessageBox.about(self, "About Node Novel engine",
                 "The <b>NN engine</b> example demonstrates how to write ur vizual novel "
                 "using PyQt5 and NodeEditor. For more information visit: "
                 "<a href='https://discord.gg/A6vAhdBX/'>discord</a>")
@@ -127,8 +130,10 @@ class CalculatorWindow(NodeEditorWindow):
         self.helpMenu = self.menuBar().addMenu("&Help")
         self.helpMenu.addAction(self.actAbout)
 
+        self.editMenu.aboutToShow.connect(self.updateEditMenu)
+
     def updateMenus(self):
-        print("update Menus")
+        # print("update Menus")
         active = self.getCurrentNodeEditorWidget()
         hasMdiChild = (active is not None)
 
@@ -141,6 +146,26 @@ class CalculatorWindow(NodeEditorWindow):
         self.actNext.setEnabled(hasMdiChild)
         self.actPrevious.setEnabled(hasMdiChild)
         self.actSeparator.setVisible(hasMdiChild)
+
+        self.updateEditMenu()
+
+    def updateEditMenu(self):
+        try:
+            print("update Edit Menu")
+            active = self.getCurrentNodeEditorWidget()
+            hasMdiChild = (active is not None)
+
+            self.actPaste.setEnabled(hasMdiChild)
+
+            self.actCut.setEnabled(hasMdiChild and active.hasSelectedItems())
+            self.actCopy.setEnabled(hasMdiChild and active.hasSelectedItems())
+            self.actDelete.setEnabled(hasMdiChild and active.hasSelectedItems())
+
+            self.actUndo.setEnabled(hasMdiChild and active.canUndo())
+            self.actRedo.setEnabled(hasMdiChild and active.canRedo())
+        except Exception as e: dumpException(e)
+
+
 
     def updateWindowMenu(self):
         self.windowMenu.clear()
@@ -177,8 +202,8 @@ class CalculatorWindow(NodeEditorWindow):
 
     def createNodesDock(self):
         self.listWidget = QListWidget()
-        self.listWidget.addItem("Add Scene")
-        self.listWidget.addItem("Add choice Scene")
+        self.listWidget.addItem("Add scene")
+        self.listWidget.addItem("Add choice scene")
         self.listWidget.addItem("Add script")
         self.listWidget.addItem("Add object")
 
@@ -191,10 +216,25 @@ class CalculatorWindow(NodeEditorWindow):
     def createStatusBar(self):
         self.statusBar().showMessage("Ready")
 
-    def createMdiChild(self):
-        nodeeditor = CalculatorSubWindow()
+    def createMdiChild(self, child_widget=None):
+        nodeeditor = child_widget if child_widget is not None else CalculatorSubWindow()
         subwnd = self.mdiArea.addSubWindow(nodeeditor)
+        subwnd.setWindowIcon(self.empty_icon)
+        # nodeeditor.scene.addItemSelectedListener(self.updateEditMenu)
+        # nodeeditor.scene.addItemsDeselectedListener(self.updateEditMenu)
+        nodeeditor.scene.history.addHistoryModifiedListener(self.updateEditMenu)
+        nodeeditor.addCloseEventListener(self.onSubWndClose)
         return subwnd
+
+    def onSubWndClose(self, widget, event):
+        existing = self.findMdiChild(widget.filename)
+        self.mdiArea.setActiveSubWindow(existing)
+
+        if self.maybeSave():
+            event.accept()
+        else:
+            event.ignore()
+
 
     def findMdiChild(self, filename):
         for window in self.mdiArea.subWindowList():
