@@ -6,6 +6,7 @@ from PyQt5.QtCore import *
 from nodeeditor.utils import loadStylesheets
 from nodeeditor.node_editor_window import NodeEditorWindow
 from examples.calc_sub_window import CalculatorSubWindow
+from examples.calc_drag_listbox import QDMDragListbox
 from nodeeditor.utils import dumpException, pp
 
 # images for the dark skin
@@ -39,17 +40,17 @@ class CalculatorWindow(NodeEditorWindow):
         self.windowMapper = QSignalMapper(self)
         self.windowMapper.mapped[QWidget].connect(self.setActiveSubWindow)
 
+        self.createNodesDock()
+
         self.createActions()
         self.createMenus()
         self.createToolBars()
         self.createStatusBar()
         self.updateMenus()
 
-        self.createNodesDock()
-
         self.readSettings()
 
-        self.setWindowTitle("Calculator NodeEditor Example")
+        self.setWindowTitle("Main scene Example")
 
     def closeEvent(self, event):
         self.mdiArea.closeAllSubWindows()
@@ -113,7 +114,7 @@ class CalculatorWindow(NodeEditorWindow):
 
 
     def about(self):
-        QMessageBox.about(self, "About Node Novel engine",
+        QMessageBox.about(self, "about Node Novel engine",
                 "The <b>NN engine</b> example demonstrates how to write ur vizual novel "
                 "using PyQt5 and NodeEditor. For more information visit: "
                 "<a href='https://discord.gg/A6vAhdBX/'>discord</a>")
@@ -151,7 +152,7 @@ class CalculatorWindow(NodeEditorWindow):
 
     def updateEditMenu(self):
         try:
-            print("update Edit Menu")
+            # print("update Edit Menu")
             active = self.getCurrentNodeEditorWidget()
             hasMdiChild = (active is not None)
 
@@ -169,6 +170,14 @@ class CalculatorWindow(NodeEditorWindow):
 
     def updateWindowMenu(self):
         self.windowMenu.clear()
+
+        toolbar_nodes = self.windowMenu.addAction("Nodes Toolbar")
+        toolbar_nodes.setCheckable(True)
+        toolbar_nodes.triggered.connect(self.onWindowNodesToolbar)
+        toolbar_nodes.setChecked(self.nodesDock.isVisible())
+
+        self.windowMenu.addSeparator()
+
         self.windowMenu.addAction(self.actClose)
         self.windowMenu.addAction(self.actCloseAll)
         self.windowMenu.addSeparator()
@@ -195,23 +204,23 @@ class CalculatorWindow(NodeEditorWindow):
             action.triggered.connect(self.windowMapper.map)
             self.windowMapper.setMapping(action, window)
 
-
+    def onWindowNodesToolbar(self):
+        if self.nodesDock.isVisible():
+            self.nodesDock.hide()
+        else:
+            self.nodesDock.show()
 
     def createToolBars(self):
         pass
 
     def createNodesDock(self):
-        self.listWidget = QListWidget()
-        self.listWidget.addItem("Add scene")
-        self.listWidget.addItem("Add choice scene")
-        self.listWidget.addItem("Add script")
-        self.listWidget.addItem("Add object")
+        self.nodesListWidget = QDMDragListbox()
 
-        self.items = QDockWidget("Nodes")
-        self.items.setWidget(self.listWidget)
-        self.items.setFloating(False)
+        self.nodesDock = QDockWidget("Nodes")
+        self.nodesDock.setWidget(self.nodesListWidget)
+        self.nodesDock.setFloating(False)
 
-        self.addDockWidget(Qt.RightDockWidgetArea, self.items)
+        self.addDockWidget(Qt.RightDockWidgetArea, self.nodesDock)
 
     def createStatusBar(self):
         self.statusBar().showMessage("Ready")

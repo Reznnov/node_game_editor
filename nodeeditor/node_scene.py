@@ -86,6 +86,12 @@ class Scene(Serializable):
     def addItemsDeselectedListener(self, callback):
         self._items_deselected_listeners.append(callback)
 
+    def addDragEnterListener(self, callback):
+        self.grScene.views()[0].addDragEnterListener(callback)
+
+    def addDropListener(self, callback):
+        self.grScene.views()[0].addDropListener(callback)
+
     # custom flag to detect node or edge has been selected....
     def resetLastSelectedStates(self):
         for node in self.nodes:
@@ -127,7 +133,7 @@ class Scene(Serializable):
         with open(filename, "r") as file:
             raw_data = file.read()
             try:
-                data = json.loads(raw_data)
+                data = json.loads(raw_data, encoding='utf-8')
                 self.deserialize(data)
                 self.has_been_modified = False
             except json.JSONDecodeError:

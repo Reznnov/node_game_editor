@@ -1,0 +1,353 @@
+{
+    "id": 139755505742800,
+    "scene_width": 64000,
+    "scene_height": 64000,
+    "nodes": [
+        {
+            "id": 139755505932208,
+            "title": "Scene",
+            "pos_x": -334.0,
+            "pos_y": -198.0,
+            "inputs": [
+                {
+                    "id": 139755505953728,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505953776,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505953920,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505932208,
+            "title": "Scene",
+            "pos_x": -334.0,
+            "pos_y": -198.0,
+            "inputs": [
+                {
+                    "id": 139755505953728,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505953776,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505953920,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505954592,
+            "title": "Choice Scene",
+            "pos_x": 76.0,
+            "pos_y": -153.0,
+            "inputs": [
+                {
+                    "id": 139755505954832,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505954928,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505955024,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505954592,
+            "title": "Choice Scene",
+            "pos_x": 76.0,
+            "pos_y": -153.0,
+            "inputs": [
+                {
+                    "id": 139755505954832,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505954928,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505955024,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505954640,
+            "title": "Scene",
+            "pos_x": -334.0,
+            "pos_y": 122.0,
+            "inputs": [
+                {
+                    "id": 139755505955264,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505955360,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505955456,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505954640,
+            "title": "Scene",
+            "pos_x": -334.0,
+            "pos_y": 122.0,
+            "inputs": [
+                {
+                    "id": 139755505955264,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505955360,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505955456,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505956272,
+            "title": "Script",
+            "pos_x": 525.0,
+            "pos_y": -144.0,
+            "inputs": [
+                {
+                    "id": 139755505956512,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505956608,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505956704,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505956272,
+            "title": "Script",
+            "pos_x": 525.0,
+            "pos_y": -144.0,
+            "inputs": [
+                {
+                    "id": 139755505956512,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505956608,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505956704,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505956320,
+            "title": "Object",
+            "pos_x": 130.0,
+            "pos_y": 212.0,
+            "inputs": [
+                {
+                    "id": 139755505956944,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505957040,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505957136,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": 139755505956320,
+            "title": "Object",
+            "pos_x": 130.0,
+            "pos_y": 212.0,
+            "inputs": [
+                {
+                    "id": 139755505956944,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                },
+                {
+                    "id": 139755505957040,
+                    "index": 1,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 139755505957136,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "content": {}
+        }
+    ],
+    "edges": [
+        {
+            "id": 139755505954544,
+            "edge_type": 2,
+            "start": 139755505955456,
+            "end": 139755505954832
+        },
+        {
+            "id": 139755505954784,
+            "edge_type": 2,
+            "start": 139755505953920,
+            "end": 139755505954928
+        },
+        {
+            "id": 139755505956224,
+            "edge_type": 2,
+            "start": 139755505955024,
+            "end": 139755505956608
+        },
+        {
+            "id": 139755505956464,
+            "edge_type": 2,
+            "start": 139755505957136,
+            "end": 139755505956512
+        }
+    ]
+}
